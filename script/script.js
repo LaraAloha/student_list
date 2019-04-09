@@ -5,27 +5,46 @@ fetch('./index.json')
 	}).then(json => {
 		studentData = json;
 		let ol = document.createElement('ol');
-
-		for (i = 1; i <= Object.keys(studentData).length; i++) {
-			let div = document.getElementById('wrap');
-
-			debugger;
+		let buttonDelete = document.createElement('input');
+		buttonDelete.type = "button"; 
+		buttonDelete.name = "DELETE";
+		buttonDelete.value = "DELETE";
+		document.body.appendChild(buttonDelete);
+		buttonDelete.classList.add('buttonDelete');
+//Создана и добавлена кнопка делит
+		let div = document.getElementById('wrap');
+		wrap.classList.add('wrap');
+//Создана и добавлена обертка к списку
+		for (let i = 1; i <= Object.keys(studentData).length; i++) {
 			let li = document.createElement('li');
 			let checkbox = document.createElement('input');
-			checkbox.type = "checkbox"; 
-            checkbox.name = "name"+i; 
-            // checkbox.value = "value"; 
-            // checkbox.id = "id"; 
 
-
-
+			checkbox.type = "checkbox";
+			checkbox.id = "checkbox"+i; 
+			checkbox.name = "name"+i; 
+			checkbox.classList.add('checkbox');
+			//debugger;
 			div.appendChild(ol);
+
 			ol.appendChild(li);
-			li.innerHTML = studentData[i];
+			li.innerHTML = `<label for=checkbox${i}> ${studentData[i]} </label>`;
 
 			li.appendChild(checkbox);
-			
+			}
+//произошел цикл, добавив список на страницу
+
+			let checkboxes = document.getElementsByClassName('checkbox');
+
+			buttonDelete.onclick = function () {
+			// если чекбоксы отмечены
+			for (let i = 0; i <= checkboxes.length; i++) {
+				if(checkboxes[i].checked) {
+// происходит их удаление
+					checkboxes[i].parentNode.style.display = "none"; 
+				}
+			}
 		}
+			
 	});
 
 

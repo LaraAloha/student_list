@@ -1,3 +1,16 @@
-.line {
-	border: 4px inset gray; 
+.wrap {
+	border: 4px inset blue; 
+
 }
+
+.buttonDelete{
+	border: 4px inset green; 
+	background-color: green;
+}
+
+.checkbox{
+	border: 4px inset blue; 
+	background-color: green;
+	margin: 8px 0.5ex;
+/*    margin-left: 90%;
+*/}
