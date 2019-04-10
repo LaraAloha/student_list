@@ -1,4 +1,14 @@
 
+function checkAll(mainCheckbox) {
+	debugger;
+	let checkForms = document.querySelectorAll('input');
+
+	for (let checkForm of checkForms) {
+		checkForm.checked = mainCheckbox.checked;
+	}
+}
+
+
 fetch('./index.json')
 	.then(function(response) {
 		return response.json();
@@ -15,6 +25,7 @@ fetch('./index.json')
 		let div = document.getElementById('wrap');
 		wrap.classList.add('wrap');
 //Создана и добавлена обертка к списку
+
 		for (let i = 1; i <= Object.keys(studentData).length; i++) {
 			let li = document.createElement('li');
 			let checkbox = document.createElement('input');
@@ -32,19 +43,19 @@ fetch('./index.json')
 			li.appendChild(checkbox);
 			}
 //произошел цикл, добавив список на страницу
-
 			let checkboxes = document.getElementsByClassName('checkbox');
 
 			buttonDelete.onclick = function () {
 			// если чекбоксы отмечены
-			for (let i = 0; i <= checkboxes.length; i++) {
-				if(checkboxes[i].checked) {
-// происходит их удаление
-					checkboxes[i].parentNode.style.display = "none"; 
-				}
+				for (let i = 0; i < checkboxes.length; i++) {
+					if(checkboxes[i].checked) {
+	// происходит их удаление
+						checkboxes[i].parentNode.style.display = "none"; 
+					}
+				}		
 			}
-		}
 			
+
 	});
 
 
