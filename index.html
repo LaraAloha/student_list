@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>	Student list </title>
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js"> </script>
 </head>
 <body>
-	<div class="wrap" id="wrap">
-		<input type="checkbox" name="all" value="Select all" class="selectAll" onClick="checkAll(this)"> SELECT ALL
-
+	<div class="wrap" id="wrap" ng-controller='studController'>
+		<button ng-click="buttonDelete(this)"> DELETE </button>
+		<input ng-model='mainCheckbox' type="checkbox"> SELECT ALL {{mainCheckbox}}
+		<ol>
+			<li ng-repeat ='student in students'>
+				{{ student }}
+			<input type="checkbox" class="checkbox">
+			</li>
+		</ol>
 	</div>
 	<script type="text/javascript" src="script/script.js""></script>
+
 </body>
 </html>
 
