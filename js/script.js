@@ -5,23 +5,30 @@ myApp.controller('studController', function($scope, $http) {
 		.then(function(data, status) {
 			$scope.students = data.data;
 		});
-	$scope.checkAll = function(mainCheckbox) {
-		console.log(mainCheckbox);
-		let checkForms = document.querySelectorAll('input');
-		for (let checkForm of checkForms) {
-			checkForm.checked = mainCheckbox.checked;
+		$scope.checkForms = {};
+		$scope.buttonDelete = function () {
+			//
+			console.log($scope.checkForms);
 		}
-	};
-	$scope.buttonDelete = function () {
-		// если чекбоксы отмечены
-		for (let i = 0; i < checkboxes.length; i++) {
-			if(checkboxes[i].checked) {
-			// происходит их удаление
-				checkboxes[i].parentNode.remove();
-			}
-		}		
-	};
-	$scope.mainCheckbox = false;
+			// let checkForms = document.querySelectorAll('input');
+// $scope.checkAll = function(mainCheckbox) {
+// 		console.log(mainCheckbox);
+// 		// let checkForms = document.querySelectorAll('input');
+		// // по циклу каждому элементу выдется значение mainCheckbox
+		// for (let checkForm of checkForms) {
+		// 	checkForm.checked = mainCheckbox.checked;
+		// }
+
+	// $scope.buttonDelete = function () {
+	// 	// если чекбоксы отмечены
+	// 	for (let i = 0; i < checkForms.length; i++) {
+	// 		if(checkForms[i].checked) {
+	// 		// происходит их удаление
+	// 			checkForms[i].parentNode.remove();
+	// 		}
+	// 	}		
+	// };
+//	$scope.mainCheckbox = false;
 });
  
 

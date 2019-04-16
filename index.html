@@ -4,21 +4,28 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>	Student list </title>
-	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js"> </script>
 </head>
 <body>
 	<div class="wrap" id="wrap" ng-controller='studController'>
-		<button ng-click="buttonDelete(this)"> DELETE </button>
-		<input ng-model='mainCheckbox' type="checkbox"> SELECT ALL {{mainCheckbox}}
+	
+		<button ng-click="buttonDelete()"> DELETE </button>
+		<input ng-model='mainCheckbox' type="checkbox"> SELECT ALL
+
 		<ol>
 			<li ng-repeat ='student in students'>
-				{{ student }}
-			<input type="checkbox" class="checkbox">
+			{{ student }}
+			<input ng-model="checkForms[$index]" ng-checked="mainCheckbox" type="checkbox" class="checkbox">		
 			</li>
 		</ol>
+	
 	</div>
-	<script type="text/javascript" src="script/script.js""></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/script.js""></script>
+	<script type="text/javascript" src="js/bootstrap.min.js""></script>
 
 </body>
 </html>
