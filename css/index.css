@@ -1,0 +1,10 @@
+.cont-btns {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 10px;
+}
+
+.wrap {
+	max-width: 500px;
+	margin: 0 auto;
+}

@@ -1,3 +1,6 @@
+// @TODO подключить плавное удаление анимацией!
+
+
 const myApp = angular.module('myApp', []);
 // пустой массив для создания нового модуля myApp (не просто получение)
 myApp.controller('studController', function($scope, $http) {
@@ -7,28 +10,30 @@ myApp.controller('studController', function($scope, $http) {
 		});
 		$scope.checkForms = {};
 		$scope.buttonDelete = function () {
-			//
+//debugger;
 			console.log($scope.checkForms);
+			const finish = Object.keys($scope.students).length;
+			//лучшие практики (не работал цикл, пока не вынесла в отдельную константу). Цикл поднимал по индексу
+			for ( $scope.id = 1; $scope.id <= finish; $scope.id++) {
+				if ($scope.checkForms[$scope.id] == true) {
+					delete $scope.students[$scope.id];
+				console.log($scope.students);
+				}
+			}
+			$scope.checkForms = {};
 		}
-			// let checkForms = document.querySelectorAll('input');
-// $scope.checkAll = function(mainCheckbox) {
-// 		console.log(mainCheckbox);
-// 		// let checkForms = document.querySelectorAll('input');
-		// // по циклу каждому элементу выдется значение mainCheckbox
-		// for (let checkForm of checkForms) {
-		// 	checkForm.checked = mainCheckbox.checked;
-		// }
+			$scope.mainCheckbox = false;
 
-	// $scope.buttonDelete = function () {
-	// 	// если чекбоксы отмечены
-	// 	for (let i = 0; i < checkForms.length; i++) {
-	// 		if(checkForms[i].checked) {
-	// 		// происходит их удаление
-	// 			checkForms[i].parentNode.remove();
-	// 		}
-	// 	}		
-	// };
-//	$scope.mainCheckbox = false;
+		    $scope.$watch('mainCheckbox', function() {
+		    	if ($scope.students === undefined) {
+		    		return;
+		    	}
+
+		    	for (let i = 0; i <= Object.keys($scope.students).length; i++) {
+		    		$scope.checkForms[i] = $scope.mainCheckbox;
+		    	}
+			});
+
 });
  
 

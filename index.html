@@ -5,21 +5,26 @@
 	<meta name="viewport" content="width=device-width">
 	<title>	Student list </title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js"> </script>
 </head>
 <body>
-	<div class="wrap" id="wrap" ng-controller='studController'>
-	
-		<button ng-click="buttonDelete()"> DELETE </button>
-		<input ng-model='mainCheckbox' type="checkbox"> SELECT ALL
+	<div class="wrap" ng-controller='studController'>
+		
+		<div class="cont-btns">		
+			<button class='btn btn-default' ng-click="buttonDelete()"> DELETE </button>
+			<label class='btn btn-default'> <input ng-model='mainCheckbox' type="checkbox"> SELECT ALL </label>
+						{{ mainCheckbox }}
 
-		<ol>
-			<li ng-repeat ='student in students'>
-			{{ student }}
-			<input ng-model="checkForms[$index]" ng-checked="mainCheckbox" type="checkbox" class="checkbox">		
-			</li>
-		</ol>
-	
+<!-- 			следить за мейнчекбокс и когда оно меняется проставлять всем чекбоксам
+ -->		
+			</div>
+
+		<div class="list-group-item list-group-item-action" ng-repeat ='(id, name) in students'>
+			<span class="glyphicon glyphicon-user"></span> 
+			{{ name }}
+			<input class='' ng-model="checkForms[id]" type="checkbox">	{{ checkForms[id] }}
+		</div>		
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
