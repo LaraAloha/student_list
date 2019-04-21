@@ -1,37 +1,65 @@
-// @TODO подключить плавное удаление анимацией!
+// @TODO хочу подключить плавное удаление анимацией!
 
 
-const myApp = angular.module('myApp', []);
+const myApp = angular.module('myApp', ['ngAnimate']);
 // пустой массив для создания нового модуля myApp (не просто получение)
 myApp.controller('studController', function($scope, $http) {
+	let storage;
 	$http({method: 'GET', url: './index.json'})
 		.then(function(data, status) {
 			$scope.students = data.data;
+			storage = Object.assign({}, $scope.students);
+			//вернула всех на место с помощью копирования
+			//console.log(storage);
 		});
 		$scope.checkForms = {};
+		
+		$scope.buttonReturn = function () {
+			// debugger;
+			storageCopy = Object.assign({}, storage);
+			$scope.students = storageCopy;
+			//console.log(storage);
+			//console.log($scope.students);
+		}
+
 		$scope.buttonDelete = function () {
 //debugger;
-			console.log($scope.checkForms);
+			// console.log($scope.checkForms);
 			const finish = Object.keys($scope.students).length;
 			//лучшие практики (не работал цикл, пока не вынесла в отдельную константу). Цикл поднимал по индексу
 			for ( $scope.id = 1; $scope.id <= finish; $scope.id++) {
+			//нашла баг, надо for each, наверное!
 				if ($scope.checkForms[$scope.id] == true) {
 					delete $scope.students[$scope.id];
-				console.log($scope.students);
+				// console.log($scope.students);
 				}
 			}
 			$scope.checkForms = {};
 		}
 			$scope.mainCheckbox = false;
 
+
 		    $scope.$watch('mainCheckbox', function() {
+		    	// про кнопку selectall 
 		    	if ($scope.students === undefined) {
 		    		return;
 		    	}
 
-		    	for (let i = 0; i <= Object.keys($scope.students).length; i++) {
-		    		$scope.checkForms[i] = $scope.mainCheckbox;
-		    	}
+		    	 console.log('students') 
+		    	console.log($scope.students);
+
+		    	console.log('checkboxes')
+		    	console.log($scope.checkForms);
+
+//подумать - лучше ли переделать for each? получаю ключи и для каждого выставляю 
+		    	// for (let i = 0; i <= Object.keys($scope.students).length; i++) {
+		    	//конвертирую в форич
+		    	const studNums = Object.keys($scope.students)
+		    	studNums.forEach(function(studNum){
+
+		    		$scope.checkForms[studNum] = $scope.mainCheckbox;
+		    	//$scope.mainCheckbox - переключатель на "чекд" выставляю
+		    	});
 			});
 
 });

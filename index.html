@@ -9,27 +9,29 @@
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js"> </script>
 </head>
 <body>
-	<div class="wrap" ng-controller='studController'>
+	<div class="jumbotron " ng-controller='studController'>
 		
-		<div class="cont-btns">		
-			<button class='btn btn-default' ng-click="buttonDelete()"> DELETE </button>
-			<label class='btn btn-default'> <input ng-model='mainCheckbox' type="checkbox"> SELECT ALL </label>
-						{{ mainCheckbox }}
+		<div class="cont-btns ">		
+			<button class='btn btn-primary btn-lg' ng-click="buttonDelete()"> DELETE </button>
 
-<!-- 			следить за мейнчекбокс и когда оно меняется проставлять всем чекбоксам
- -->		
-			</div>
+			<label class='btn btn-primary btn-lg'> <input type="checkbox" ng-model='mainCheckbox'> SELECT ALL </label>
 
-		<div class="list-group-item list-group-item-action" ng-repeat ='(id, name) in students'>
-			<span class="glyphicon glyphicon-user"></span> 
-			{{ name }}
-			<input class='' ng-model="checkForms[id]" type="checkbox">	{{ checkForms[id] }}
-		</div>		
+			<button class='btn btn-primary btn-lg' ng-click="buttonReturn()"> RETURN </button>
+
+<!-- 	следить за мейнчекбокс и когда оно меняется проставлять всем чекбоксам -->		
+		</div>
+
+			<label ng-repeat ='(id, name) in students' class='my-list list-group-item animate-repeat'> 
+				<span class="glyphicon glyphicon-user"></span> 
+				{{ name }}
+				<input ng-model="checkForms[id]" type="checkbox">
+			</label>		
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/script.js""></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-animate.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js""></script>
 
 </body>
