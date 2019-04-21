@@ -39,3 +39,7 @@
 .animate-repeat.ng-enter.ng-enter-active {
 	opacity:1;
 }
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}

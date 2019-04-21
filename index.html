@@ -4,12 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>	Student list </title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/index.css">
- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js"> </script>
+	<link rel="stylesheet" href="src/css/bootstrap.min.css">
+	<link rel="stylesheet" href="src/css/index.css">
 </head>
 <body>
-	<div class="jumbotron " ng-controller='studController'>
+	<div class="jumbotron" ng-controller='studController'>
 		
 		<div class="cont-btns ">		
 			<button class='btn btn-primary btn-lg' ng-click="buttonDelete()"> DELETE </button>
@@ -18,21 +17,21 @@
 
 			<button class='btn btn-primary btn-lg' ng-click="buttonReturn()"> RETURN </button>
 
-<!-- 	следить за мейнчекбокс и когда оно меняется проставлять всем чекбоксам -->		
 		</div>
 
-			<label ng-repeat ='(id, name) in students' class='my-list list-group-item animate-repeat'> 
+			<label ng-repeat ='(id, name) in students' class='ng-cloak my-list list-group-item animate-repeat'> 
 				<span class="glyphicon glyphicon-user"></span> 
-				{{ name }}
+				{{id +'.'}} {{ name }}
 				<input ng-model="checkForms[id]" type="checkbox">
 			</label>		
 	</div>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js" > </script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/script.js"></script>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-animate.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js""></script>
+ 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-animate.js"></script>
+	<script type="text/javascript" src="src/js/bootstrap.min.js""></script>
+	<script type="text/javascript" src="./dist/output.js"></script>
 
 </body>
 </html>
